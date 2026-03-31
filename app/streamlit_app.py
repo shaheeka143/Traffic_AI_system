@@ -32,9 +32,20 @@ video_file = st.file_uploader("Upload a traffic video file", type=['mp4', 'avi',
 
 @st.cache_resource
 def load_models():
-    detector = Detector(config.MODEL_PATH)
+    # Get the absolute path to the project root
+    root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+    
+    detector_path = os.path.join(root, config.MODEL_PATH)
+    pothole_path = os.path.join(root, config.POTHOLE_MODEL_PATH)
+    
+    detector = Detector(detector_path)
     tracker = Tracker()
-    pothole_detector = PotholeDetector(config.POTHOLE_MODEL_PATH)
+    
+    # Optional pothole detector
+    pothole_detector = None
+    if os.path.exists(pothole_path):
+        pothole_detector = PotholeDetector(pothole_path)
+        
     return detector, tracker, pothole_detector
 
 if video_file:

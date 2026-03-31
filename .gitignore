@@ -3,8 +3,9 @@ venv/
 .venv/
 env/
 
-# AI Models (large files)
-*.pt
+# AI Models (essential)
+data/models/*.pt
+! data/models/*.pt
 *.onnx
 
 # Video Files & Outputs
