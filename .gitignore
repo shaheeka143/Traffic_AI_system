@@ -1,0 +1,33 @@
+# Python virtual environment
+venv/
+.venv/
+env/
+
+# AI Models (large files)
+*.pt
+*.onnx
+
+# Video Files & Outputs
+*.mp4
+*.avi
+*.mov
+outputs/evidence/*.jpg
+outputs/csv/*.csv
+outputs/logs/*.txt
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.dll
+*.pyd
+
+# Streamlit logs
+.streamlit/
+! .streamlit/config.toml
+
+# IDE settings
+.vscode/
+.idea/
+.DS_Store

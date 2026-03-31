@@ -1,0 +1,14 @@
+ultralytics
+opencv-python
+numpy
+pandas
+torch
+torchvision
+paddleocr
+paddlepaddle
+easyocr
+filterpy
+scikit-image
+lap
+streamlit
+flask
