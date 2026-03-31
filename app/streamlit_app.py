@@ -36,15 +36,16 @@ def load_models():
     root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
     
     detector_path = os.path.join(root, config.MODEL_PATH)
-    pothole_path = os.path.join(root, config.POTHOLE_MODEL_PATH)
+    
+    # Only try to load pothole model if enabled and path exists
+    pothole_detector = None
+    if getattr(config, 'ENABLE_POTHOLE', False) and hasattr(config, 'POTHOLE_MODEL_PATH'):
+        pothole_path = os.path.join(root, config.POTHOLE_MODEL_PATH)
+        if os.path.exists(pothole_path):
+            pothole_detector = PotholeDetector(pothole_path)
     
     detector = Detector(detector_path)
     tracker = Tracker()
-    
-    # Optional pothole detector
-    pothole_detector = None
-    if os.path.exists(pothole_path):
-        pothole_detector = PotholeDetector(pothole_path)
         
     return detector, tracker, pothole_detector
 
